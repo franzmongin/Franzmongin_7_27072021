@@ -1,0 +1,45 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+}
+.homepage .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.homepage .header h1 {
+  color: #d04f4f;
+  font-family: "DM sans";
+  margin: 0;
+  font-size: 2.3125rem;
+}
+.homepage .main-content {
+  display: flex;
+  flex-direction: column;
+}
+.homepage .main-content .search-and-tags {
+  display: flex;
+  flex-direction: column;
+}
+.homepage .main-content .search-and-tags .search-bar {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  background-color: #e7e7e7;
+}
+.homepage .main-content .search-and-tags .search-bar input {
+  height: 100%;
+  flex-grow: 1;
+  border: none;
+  box-sizing: border-box;
+  background-color: inherit;
+}
+.homepage .main-content .search-and-tags .search-bar img {
+  width: 20px;
+}
+
+body {
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=style.css.map */
