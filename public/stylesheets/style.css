@@ -37,6 +37,33 @@
 .homepage .main-content .search-and-tags .search-bar img {
   width: 20px;
 }
+.homepage .main-content .search-and-tags .tag-selections {
+  display: flex;
+}
+.homepage .main-content .search-and-tags .tag-selections .form-select {
+  width: inherit;
+  min-width: 170px;
+  min-height: 4.3125rem;
+  color: white;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  display: flex;
+}
+.homepage .main-content .search-and-tags .tag-selections .form-select.ingredients-selection {
+  background-color: #3282F7;
+}
+.homepage .main-content .search-and-tags .tag-selections .form-select.device-selection {
+  background-color: #68D9A4;
+}
+.homepage .main-content .search-and-tags .tag-selections .form-select.utensils-selection {
+  background-color: #ED6454;
+}
+.homepage .main-content .search-and-tags .tag-selections .form-select input {
+  background-color: inherit;
+  border: none;
+}
+.homepage .main-content .search-and-tags .tag-selections .form-select input::placeholder {
+  color: white;
+}
 
 body {
   font-size: 16px;

@@ -34,6 +34,33 @@
           width: 20px;
         }
       }
+      .tag-selections{
+        display:flex;
+        .form-select{
+          width:inherit;
+          min-width:170px;
+          min-height: 4.3125rem;
+          color:white;
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+          display: flex;
+          &.ingredients-selection{
+            background-color:#3282F7;
+          }
+          &.device-selection{
+            background-color:#68D9A4;
+          }
+          &.utensils-selection{
+            background-color:#ED6454;
+          }
+          input{
+            background-color:inherit;
+            border:none;
+            &::placeholder{
+              color:white;
+            }
+          }
+        }
+      }
     }
   }
 }
