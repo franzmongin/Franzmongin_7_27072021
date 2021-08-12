@@ -37,32 +37,101 @@
 .homepage .main-content .search-and-tags .search-bar img {
   width: 20px;
 }
-.homepage .main-content .search-and-tags .tag-selections {
+.homepage .main-content .search-and-tags .order-selections {
   display: flex;
+  align-items: flex-start;
 }
-.homepage .main-content .search-and-tags .tag-selections .form-select {
+.homepage .main-content .search-and-tags .order-selections .choices-selection {
   width: inherit;
-  min-width: 170px;
   min-height: 4.3125rem;
   color: white;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   display: flex;
+  flex-wrap: wrap;
+  max-width: 50%;
+  position: relative;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
-.homepage .main-content .search-and-tags .tag-selections .form-select.ingredients-selection {
-  background-color: #3282F7;
+.homepage .main-content .search-and-tags .order-selections .choices-selection.opened-list {
+  flex-basis: 33.33%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
-.homepage .main-content .search-and-tags .tag-selections .form-select.device-selection {
-  background-color: #68D9A4;
+.homepage .main-content .search-and-tags .order-selections .choices-selection .select-arrow {
+  content: url("../../images/icons/arrow_top.svg");
+  position: absolute;
+  right: 0;
+  top: 30px;
 }
-.homepage .main-content .search-and-tags .tag-selections .form-select.utensils-selection {
-  background-color: #ED6454;
+.homepage .main-content .search-and-tags .order-selections .choices-selection .select-arrow.bottom-arrow {
+  content: url("../../images/icons/arrow_bottom.svg");
 }
-.homepage .main-content .search-and-tags .tag-selections .form-select input {
+.homepage .main-content .search-and-tags .order-selections .choices-selection.ingredients-selection {
+  background-color: #3282f7;
+}
+.homepage .main-content .search-and-tags .order-selections .choices-selection.appliances-selection {
+  background-color: #68d9a4;
+}
+.homepage .main-content .search-and-tags .order-selections .choices-selection.ustensils-selection {
+  background-color: #ed6454;
+}
+.homepage .main-content .search-and-tags .order-selections .choices-selection input {
   background-color: inherit;
   border: none;
-}
-.homepage .main-content .search-and-tags .tag-selections .form-select input::placeholder {
+  outline: none;
   color: white;
+  min-height: 4.3125rem;
+  flex-basis: 100%;
+  border-radius: 5px;
+}
+.homepage .main-content .search-and-tags .order-selections .choices-selection input::placeholder {
+  color: white;
+}
+.homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list {
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  display: none;
+  position: absolute;
+  background: inherit;
+  top: 69px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list.show-list {
+  display: flex;
+}
+.homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list .choice {
+  flex-basis: 30%;
+}
+.homepage .main-content .recipes-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
+.homepage .main-content .recipes-list .recipe {
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.homepage .main-content .recipes-list .recipe .recipe-image {
+  height: 300px;
+  background-color: grey;
+}
+.homepage .main-content .recipes-list .recipe .recipe-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.homepage .main-content .recipes-list .recipe .recipe-content .recipe-heading {
+  flex-basis: 50%;
+}
+.homepage .main-content .recipes-list .recipe .recipe-content .recipe-duration {
+  flex-basis: 50%;
+}
+.homepage .main-content .recipes-list .recipe .recipe-content .recipe-description {
+  flex-basis: 50%;
+}
+.homepage .main-content .recipes-list .recipe .recipe-content .recipe-ingredients {
+  flex-basis: 50%;
 }
 
 body {

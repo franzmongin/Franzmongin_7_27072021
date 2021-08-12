@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Les petits plats</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,24 +39,39 @@
               class="search-icon"
             />
           </div>
-          <div class="active-tags">
-
-          </div>
-          <div class="tag-selections">
-            <div class="form-select ingredients-selection">
-              <input type="text" placeholder="Ingrédients" disabled>
+          <div class="active-tags"></div>
+          <div class="order-selections">
+            <div class="ingredients-selection choices-selection">
+              <input type="text" placeholder="Ingrédients" />
+              <div class="ingredients-choices choices-list"></div>
+              <div class="select-arrow"></div>
             </div>
-            <div class="form-select device-selection">
-              <input type="text" placeholder="Appareil" disabled>
+            <div class="appliances-selection choices-selection">
+              <input type="text" placeholder="Appareil" />
+              <div class="appliances-choices choices-list"></div>
+              <div
+                class="select-arrow"
+                src="./images/icons/arrow_top.svg"
+              ></div>
             </div>
-            <div class="form-select utensils-selection">
-              <input type="text" placeholder="Ustensiles" disabled>
+            <div class="ustensils-selection choices-selection">
+              <input type="text" placeholder="Ustensiles" />
+              <div class="ustensils-choices choices-list"></div>
+              <div
+                class="select-arrow"
+                src="./images/icons/arrow_top.svg"
+              ></div>
             </div>
           </div>
         </section>
+        <section class="recipes-list"></section>
       </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="js/index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>
