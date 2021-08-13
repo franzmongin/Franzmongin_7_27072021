@@ -101,7 +101,7 @@
   display: flex;
 }
 .homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list .choice {
-  flex-basis: 30%;
+  flex-basis: 33.33%;
 }
 .homepage .main-content .recipes-list {
   display: flex;
