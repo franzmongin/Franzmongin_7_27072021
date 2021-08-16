@@ -15,9 +15,12 @@
   .main-content {
     display: flex;
     flex-direction: column;
+    padding: 0 100px;
     .search-and-tags {
       display: flex;
       flex-direction: column;
+      position: relative;
+      margin-bottom: 150px;
       .search-bar {
         width: 100%;
         height: 70px;
@@ -34,28 +37,51 @@
           width: 20px;
         }
       }
+      .active-tags {
+        display: flex;
+        position: relative;
+        top: 20px;
+        .active-choice {
+          color: white;
+          margin-right: 15px;
+          padding: 5px 10px;
+          border-radius: 5px;
+        }
+        .active-choice-ingredients {
+          background-color: #3282f7;
+        }
+        .active-choice-appliances {
+          background-color: #68d9a4;
+        }
+        .active-choice-ustensils {
+          background-color: #ed6454;
+        }
+      }
       .order-selections {
         display: flex;
         align-items: flex-start;
+        position: absolute;
+        top: 150px;
+        column-gap: 20px;
         .choices-selection {
           width: inherit;
           min-height: 4.3125rem;
           color: white;
           display: flex;
-          flex-wrap: wrap;
+          flex-direction: column;
           max-width: 50%;
-          position: relative;
           border-radius: 5px;
-          margin-bottom: 20px;
+          position: relative;
+          padding-right: 20px;
+          padding-left: 20px;
           &.opened-list {
-            flex-basis: 33.33%;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
           }
           .select-arrow {
             content: url("../../images/icons/arrow_top.svg");
             position: absolute;
-            right: 0;
+            right: 20px;
             top: 30px;
             &.bottom-arrow {
               content: url("../../images/icons/arrow_bottom.svg");
@@ -84,19 +110,21 @@
             }
           }
           .choices-list {
-            flex-basis: 100%;
+            // flex-basis: 100%;
             flex-wrap: wrap;
             display: none;
-            position: absolute;
+            // position: absolute;
             background: inherit;
             top: 69px;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
             &.show-list {
               display: flex;
+              column-gap: 10px;
             }
             .choice {
-              flex-basis: 33.33%;
+              flex-basis: 32%;
+              margin-bottom: 10px;
             }
           }
         }
@@ -106,25 +134,52 @@
       display: flex;
       flex-wrap: wrap;
       column-gap: 20px;
+      justify-content: space-between;
       .recipe {
-        flex-basis: 30%;
+        flex-basis: 32%;
         display: flex;
         flex-direction: column;
         .recipe-image {
-          height: 300px;
-          background-color: grey;
+          height: 170px;
+          background-color: #c7bebe;
         }
+        margin-bottom: 40px;
         .recipe-content {
           display: flex;
           flex-wrap: wrap;
-          .recipe-heading {
-            flex-basis: 50%;
+          background-color: #e7e7e7;
+          padding: 18px;
+          height: 200px;
+
+          .heading-and-duration {
+            display: flex;
+            flex-basis: 100%;
+            justify-content: space-between;
+            align-items: flex-start;
+            .recipe-heading {
+              font-size: 1.125rem;
+            }
+            .recipe-duration {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              font-weight: 700;
+              column-gap: 10px;
+              white-space: nowrap;
+              .duration-icon {
+                height: 20px;
+                width: 20px;
+              }
+            }
           }
-          .recipe-duration {
-            flex-basis: 50%;
+          .recipe-ingredients,
+          .recipe-description {
+            font-size: 0.75rem;
           }
+
           .recipe-description {
             flex-basis: 50%;
+            line-clamp: 5;
           }
           .recipe-ingredients {
             flex-basis: 50%;

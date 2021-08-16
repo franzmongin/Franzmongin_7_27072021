@@ -16,10 +16,13 @@
 .homepage .main-content {
   display: flex;
   flex-direction: column;
+  padding: 0 100px;
 }
 .homepage .main-content .search-and-tags {
   display: flex;
   flex-direction: column;
+  position: relative;
+  margin-bottom: 150px;
 }
 .homepage .main-content .search-and-tags .search-bar {
   width: 100%;
@@ -37,30 +40,53 @@
 .homepage .main-content .search-and-tags .search-bar img {
   width: 20px;
 }
+.homepage .main-content .search-and-tags .active-tags {
+  display: flex;
+  position: relative;
+  top: 20px;
+}
+.homepage .main-content .search-and-tags .active-tags .active-choice {
+  color: white;
+  margin-right: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.homepage .main-content .search-and-tags .active-tags .active-choice-ingredients {
+  background-color: #3282f7;
+}
+.homepage .main-content .search-and-tags .active-tags .active-choice-appliances {
+  background-color: #68d9a4;
+}
+.homepage .main-content .search-and-tags .active-tags .active-choice-ustensils {
+  background-color: #ed6454;
+}
 .homepage .main-content .search-and-tags .order-selections {
   display: flex;
   align-items: flex-start;
+  position: absolute;
+  top: 150px;
+  column-gap: 20px;
 }
 .homepage .main-content .search-and-tags .order-selections .choices-selection {
   width: inherit;
   min-height: 4.3125rem;
   color: white;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   max-width: 50%;
-  position: relative;
   border-radius: 5px;
-  margin-bottom: 20px;
+  position: relative;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 .homepage .main-content .search-and-tags .order-selections .choices-selection.opened-list {
-  flex-basis: 33.33%;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 .homepage .main-content .search-and-tags .order-selections .choices-selection .select-arrow {
   content: url("../../images/icons/arrow_top.svg");
   position: absolute;
-  right: 0;
+  right: 20px;
   top: 30px;
 }
 .homepage .main-content .search-and-tags .order-selections .choices-selection .select-arrow.bottom-arrow {
@@ -88,10 +114,8 @@
   color: white;
 }
 .homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list {
-  flex-basis: 100%;
   flex-wrap: wrap;
   display: none;
-  position: absolute;
   background: inherit;
   top: 69px;
   border-bottom-left-radius: 5px;
@@ -99,36 +123,63 @@
 }
 .homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list.show-list {
   display: flex;
+  column-gap: 10px;
 }
 .homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list .choice {
-  flex-basis: 33.33%;
+  flex-basis: 32%;
+  margin-bottom: 10px;
 }
 .homepage .main-content .recipes-list {
   display: flex;
   flex-wrap: wrap;
   column-gap: 20px;
+  justify-content: space-between;
 }
 .homepage .main-content .recipes-list .recipe {
-  flex-basis: 30%;
+  flex-basis: 32%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 }
 .homepage .main-content .recipes-list .recipe .recipe-image {
-  height: 300px;
-  background-color: grey;
+  height: 170px;
+  background-color: #c7bebe;
 }
 .homepage .main-content .recipes-list .recipe .recipe-content {
   display: flex;
   flex-wrap: wrap;
+  background-color: #e7e7e7;
+  padding: 18px;
+  height: 200px;
 }
-.homepage .main-content .recipes-list .recipe .recipe-content .recipe-heading {
-  flex-basis: 50%;
+.homepage .main-content .recipes-list .recipe .recipe-content .heading-and-duration {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
 }
-.homepage .main-content .recipes-list .recipe .recipe-content .recipe-duration {
-  flex-basis: 50%;
+.homepage .main-content .recipes-list .recipe .recipe-content .heading-and-duration .recipe-heading {
+  font-size: 1.125rem;
+}
+.homepage .main-content .recipes-list .recipe .recipe-content .heading-and-duration .recipe-duration {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 700;
+  column-gap: 10px;
+  white-space: nowrap;
+}
+.homepage .main-content .recipes-list .recipe .recipe-content .heading-and-duration .recipe-duration .duration-icon {
+  height: 20px;
+  width: 20px;
+}
+.homepage .main-content .recipes-list .recipe .recipe-content .recipe-ingredients,
+.homepage .main-content .recipes-list .recipe .recipe-content .recipe-description {
+  font-size: 0.75rem;
 }
 .homepage .main-content .recipes-list .recipe .recipe-content .recipe-description {
   flex-basis: 50%;
+  line-clamp: 5;
 }
 .homepage .main-content .recipes-list .recipe .recipe-content .recipe-ingredients {
   flex-basis: 50%;

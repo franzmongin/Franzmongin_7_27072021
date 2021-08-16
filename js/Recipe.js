@@ -15,30 +15,37 @@ export class Recipe {
     this.ingredients.forEach((ingredient) => {
       if (ingredient.unit) {
         ingredientTemplate += `
-        <div class="recipe-ingredient">${ingredient.ingredient}:${ingredient.quantity}${ingredient.unit}</div>
+        <div class="recipe-ingredient"><b>${ingredient.ingredient}</b>: ${ingredient.quantity}${ingredient.unit}</div>
       `;
       } else if (!ingredient.unit && ingredient.quantity) {
         ingredientTemplate += `
-        <div class="recipe-ingredient">${ingredient.ingredient}:${ingredient.quantity}</div>
+        <div class="recipe-ingredient"><b>${ingredient.ingredient}</b>: ${ingredient.quantity}</div>
       `;
       } else {
         ingredientTemplate += `
-        <div class="recipe-ingredient">${ingredient.ingredient}</div>
+        <div class="recipe-ingredient"><b>${ingredient.ingredient}</b></div>
       `;
       }
     });
+    let description = this.description;
+    if (description.length > 211) {
+      description = description.slice(0, 209) + "...";
+    }
     return `<div class="recipe">
             <div class="recipe-image">
 
             </div>
             <div class="recipe-content">
+            <div class="heading-and-duration">
               <h1 class="recipe-heading">${this.name}</h1>
-              <span class="recipe-duration">${this.time} min</span>
+              <span class="recipe-duration"><img class="duration-icon" src="./images/icons/clock.svg" alt="">
+${this.time} min</span>
+</div>
               <div class="recipe-ingredients">
                 ${ingredientTemplate}
               </div>
-              <div class="recipe-description">
-                ${this.description}
+              <div class="recipe-description" title="${this.description}">
+                ${description}
               </div>
             </div>
           </div>
