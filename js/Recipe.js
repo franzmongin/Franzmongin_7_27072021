@@ -7,7 +7,7 @@ export class Recipe {
     this.time = data.time;
     this.description = data.description;
     this.appliance = data.appliance;
-    this.ustensils = data.ustensils;
+    this.ustensils = data.ustensils.map((e) => e.toLowerCase());
   }
 
   getTemplate() {
