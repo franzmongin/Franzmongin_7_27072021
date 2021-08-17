@@ -6,7 +6,7 @@ export class Recipe {
     this.ingredients = data.ingredients;
     this.time = data.time;
     this.description = data.description;
-    this.appliance = data.appliance;
+    this.appliance = data.appliance.toLowerCase();
     this.ustensils = data.ustensils.map((e) => e.toLowerCase());
   }
 
