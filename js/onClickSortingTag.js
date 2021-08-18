@@ -4,7 +4,6 @@ import { fillChoicesArray } from "./fillChoicesArray.js";
 import { removeDuplicateInChoices } from "./removeDuplicateInChoices.js";
 import { capitalizeFirstLetter } from "./capitalizeFirstLetter.js";
 import { orderRecipesWithActiveTags } from "./orderRecipesWithActiveTags.js";
-import recipe from "../data/recipe.js";
 export function onClickSortingTag(
   orderedArray,
   activeSortings,
@@ -12,8 +11,8 @@ export function onClickSortingTag(
   recipeArray
 ) {
   document.querySelectorAll(".choice").forEach((element) => {
-    // console.log(recipeArray);
     element.addEventListener("click", (e) => {
+      console.log(activeSortings);
       let content = e.target.textContent;
       // ustensils case
       if (e.target.classList.contains("choice-type-ustensils")) {
@@ -35,22 +34,16 @@ export function onClickSortingTag(
             e.toLowerCase()
           );
           orderedRecipes = orderRecipesWithActiveTags(
-            "ustensils",
-            activeUstensils,
+            activeSortings,
             recipeArray
           );
+          console.log(orderedRecipes);
           fillRecipesHtml(orderedRecipes);
           orderedArray.ustensils = [];
 
           fillChoicesArray(orderedRecipes, orderedArray);
-          console.log(orderedArray.ustensils);
-
           removeDuplicateInChoices(orderedArray);
-          console.log(orderedArray.ustensils);
-          console.log(content);
-          console.log(orderedArray.ustensils.indexOf(content));
-          console.log("active-ustensils", activeUstensils);
-          console.log("orderedArray-ustensils", orderedArray.ustensils);
+
           activeUstensils.forEach((e) => {
             orderedArray.ustensils.splice(
               orderedArray.ustensils.indexOf(capitalizeFirstLetter(e)),
@@ -58,22 +51,19 @@ export function onClickSortingTag(
             );
           });
           chargeChoices("ustensils", orderedArray);
-          console.log(orderedArray.ustensils);
-          console.log("-----------------------------------------");
-
-          onClickSortingTag(
-            orderedArray,
-            activeSortings,
-            orderedRecipes,
-            recipeArray
-          );
         }
+        onClickSortingTag(
+          orderedArray,
+          activeSortings,
+          orderedRecipes,
+          recipeArray
+        );
         //--- ustensils case
 
         // appliances case
       } else if (e.target.classList.contains("choice-type-appliances")) {
-        activeSortings.appliances.push(e.target.textContent);
         if (orderedArray.appliances.indexOf(content) > -1) {
+          activeSortings.appliances.push(e.target.textContent);
           let newActiveAppliancesTagElement = document.createElement("div");
           newActiveAppliancesTagElement.setAttribute(
             "class",
@@ -89,8 +79,7 @@ export function onClickSortingTag(
             e.toLowerCase()
           );
           orderedRecipes = orderRecipesWithActiveTags(
-            "appliances",
-            activeAppliances,
+            activeSortings,
             recipeArray
           );
           console.log(orderedRecipes);
@@ -98,14 +87,8 @@ export function onClickSortingTag(
           orderedArray.appliances = [];
 
           fillChoicesArray(orderedRecipes, orderedArray);
-          // console.log(orderedArray.appliances);
 
           removeDuplicateInChoices(orderedArray);
-          // console.log(orderedArray.appliances);
-          // console.log(content);
-          // console.log(orderedArray.appliances.indexOf(content));
-          // console.log("active-appliances", activeAppliances);
-          // console.log("orderedArray-appliances", orderedArray.appliances);
           activeAppliances.forEach((e) => {
             orderedArray.appliances.splice(
               orderedArray.appliances.indexOf(capitalizeFirstLetter(e)),
@@ -113,22 +96,20 @@ export function onClickSortingTag(
             );
           });
           chargeChoices("appliances", orderedArray);
-          console.log(orderedArray.appliances);
-          console.log("-----------------------------------------");
-
-          onClickSortingTag(
-            orderedArray,
-            activeSortings,
-            orderedRecipes,
-            recipeArray
-          );
         }
+        onClickSortingTag(
+          orderedArray,
+          activeSortings,
+          orderedRecipes,
+          recipeArray
+        );
         // --- appliances case
 
         //ingredients case
       } else if (e.target.classList.contains("choice-type-ingredients")) {
-        activeSortings.ingredients.push(e.target.textContent);
         if (orderedArray.ingredients.indexOf(content) > -1) {
+          activeSortings.ingredients.push(e.target.textContent);
+
           let newActiveIngredientsTagElement = document.createElement("div");
           newActiveIngredientsTagElement.setAttribute(
             "class",
@@ -145,8 +126,7 @@ export function onClickSortingTag(
             e.toLowerCase()
           );
           orderedRecipes = orderRecipesWithActiveTags(
-            "ingredients",
-            activeIngredients,
+            activeSortings,
             recipeArray
           );
           fillRecipesHtml(orderedRecipes);
@@ -162,14 +142,13 @@ export function onClickSortingTag(
             );
           });
           chargeChoices("ingredients", orderedArray);
-
-          onClickSortingTag(
-            orderedArray,
-            activeSortings,
-            orderedRecipes,
-            recipeArray
-          );
         }
+        onClickSortingTag(
+          orderedArray,
+          activeSortings,
+          orderedRecipes,
+          recipeArray
+        );
       }
       // --- ingredients case
     });
