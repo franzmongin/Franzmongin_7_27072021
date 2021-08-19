@@ -1,9 +1,11 @@
 import { fillRecipesHtml } from "./fillRecipesHtml.js";
-import { chargeChoices } from "./chargeChoices.js";
+import { chargeChoicesTemplate } from "./chargeChoicesTemplate.js";
 import { fillChoicesArray } from "./fillChoicesArray.js";
 import { removeDuplicateInChoices } from "./removeDuplicateInChoices.js";
 import { capitalizeFirstLetter } from "./capitalizeFirstLetter.js";
 import { orderRecipesWithActiveTags } from "./orderRecipesWithActiveTags.js";
+import { onClickRemoveOrding } from "./onClickRemoveOrding.js";
+import { onChangeOrderInput } from "./onChangeOrderInput.js";
 export function onClickSortingTag(
   orderedArray,
   activeSortings,
@@ -12,19 +14,18 @@ export function onClickSortingTag(
 ) {
   document.querySelectorAll(".choice").forEach((element) => {
     element.addEventListener("click", (e) => {
-      console.log(activeSortings);
       let content = e.target.textContent;
       // ustensils case
       if (e.target.classList.contains("choice-type-ustensils")) {
         if (orderedArray.ustensils.indexOf(content) > -1) {
-          activeSortings.ustensils.push(e.target.textContent);
+          activeSortings.ustensils.push(e.target.textContent.toLowerCase());
           let newActiveUstensilsTagElement = document.createElement("div");
           newActiveUstensilsTagElement.setAttribute(
             "class",
             "active-choice active-choice-ustensils"
           );
-          newActiveUstensilsTagElement.innerHTML = content;
-          newActiveUstensilsTagElement.innerHTML += `<img src="./images/icons/cross.svg" alt="">`;
+          newActiveUstensilsTagElement.innerHTML = `<span class="ording-text">${content}</span>`;
+          newActiveUstensilsTagElement.innerHTML += `<img  class="remove-ording" src="./images/icons/cross.svg" alt="">`;
 
           document
             .querySelector(".active-tags")
@@ -39,9 +40,12 @@ export function onClickSortingTag(
           );
           console.log(orderedRecipes);
           fillRecipesHtml(orderedRecipes);
-          orderedArray.ustensils = [];
-
-          fillChoicesArray(orderedRecipes, orderedArray);
+          orderedArray = {
+            ingredients: [],
+            appliances: [],
+            ustensils: [],
+          };
+          fillChoicesArray(orderedRecipes, orderedArray, activeSortings);
           removeDuplicateInChoices(orderedArray);
 
           activeUstensils.forEach((e) => {
@@ -50,8 +54,17 @@ export function onClickSortingTag(
               1
             );
           });
-          chargeChoices("ustensils", orderedArray);
+          chargeChoicesTemplate("ustensils", orderedArray);
+          chargeChoicesTemplate("appliances", orderedArray);
+          chargeChoicesTemplate("ingredients", orderedArray);
         }
+        onClickRemoveOrding(activeSortings, recipeArray, orderedArray);
+        onChangeOrderInput(
+          orderedArray,
+          activeSortings,
+          orderedRecipes,
+          recipeArray
+        );
         onClickSortingTag(
           orderedArray,
           activeSortings,
@@ -63,14 +76,14 @@ export function onClickSortingTag(
         // appliances case
       } else if (e.target.classList.contains("choice-type-appliances")) {
         if (orderedArray.appliances.indexOf(content) > -1) {
-          activeSortings.appliances.push(e.target.textContent);
+          activeSortings.appliances.push(e.target.textContent.toLowerCase());
           let newActiveAppliancesTagElement = document.createElement("div");
           newActiveAppliancesTagElement.setAttribute(
             "class",
             "active-choice active-choice-appliances"
           );
-          newActiveAppliancesTagElement.innerHTML = content;
-          newActiveAppliancesTagElement.innerHTML += `<img src="./images/icons/cross.svg" alt="">`;
+          newActiveAppliancesTagElement.innerHTML = `<span class="ording-text">${content}</span>`;
+          newActiveAppliancesTagElement.innerHTML += `<img  class="remove-ording" src="./images/icons/cross.svg" alt="">`;
           document
             .querySelector(".active-tags")
             .appendChild(newActiveAppliancesTagElement);
@@ -82,12 +95,13 @@ export function onClickSortingTag(
             activeSortings,
             recipeArray
           );
-          console.log(orderedRecipes);
           fillRecipesHtml(orderedRecipes);
-          orderedArray.appliances = [];
-
-          fillChoicesArray(orderedRecipes, orderedArray);
-
+          orderedArray = {
+            ingredients: [],
+            appliances: [],
+            ustensils: [],
+          };
+          fillChoicesArray(orderedRecipes, orderedArray, activeSortings);
           removeDuplicateInChoices(orderedArray);
           activeAppliances.forEach((e) => {
             orderedArray.appliances.splice(
@@ -95,8 +109,17 @@ export function onClickSortingTag(
               1
             );
           });
-          chargeChoices("appliances", orderedArray);
+          chargeChoicesTemplate("ustensils", orderedArray);
+          chargeChoicesTemplate("appliances", orderedArray);
+          chargeChoicesTemplate("ingredients", orderedArray);
         }
+        onClickRemoveOrding(activeSortings, recipeArray, orderedArray);
+        onChangeOrderInput(
+          orderedArray,
+          activeSortings,
+          orderedRecipes,
+          recipeArray
+        );
         onClickSortingTag(
           orderedArray,
           activeSortings,
@@ -108,15 +131,15 @@ export function onClickSortingTag(
         //ingredients case
       } else if (e.target.classList.contains("choice-type-ingredients")) {
         if (orderedArray.ingredients.indexOf(content) > -1) {
-          activeSortings.ingredients.push(e.target.textContent);
+          activeSortings.ingredients.push(e.target.textContent.toLowerCase());
 
           let newActiveIngredientsTagElement = document.createElement("div");
           newActiveIngredientsTagElement.setAttribute(
             "class",
             "active-choice active-choice-ingredients"
           );
-          newActiveIngredientsTagElement.innerHTML = content;
-          newActiveIngredientsTagElement.innerHTML += `<img src="./images/icons/cross.svg" alt="">`;
+          newActiveIngredientsTagElement.innerHTML = `<span class="ording-text">${content}</span>`;
+          newActiveIngredientsTagElement.innerHTML += `<img  class="remove-ording" src="./images/icons/cross.svg" alt="">`;
 
           document
             .querySelector(".active-tags")
@@ -130,9 +153,13 @@ export function onClickSortingTag(
             recipeArray
           );
           fillRecipesHtml(orderedRecipes);
-          orderedArray.ingredients = [];
+          orderedArray = {
+            ingredients: [],
+            appliances: [],
+            ustensils: [],
+          };
 
-          fillChoicesArray(orderedRecipes, orderedArray);
+          fillChoicesArray(orderedRecipes, orderedArray, activeSortings);
 
           removeDuplicateInChoices(orderedArray);
           activeIngredients.forEach((e) => {
@@ -141,8 +168,18 @@ export function onClickSortingTag(
               1
             );
           });
-          chargeChoices("ingredients", orderedArray);
+          console.log("orderedArray-after-clicking-sorting", orderedArray);
+          chargeChoicesTemplate("ustensils", orderedArray);
+          chargeChoicesTemplate("appliances", orderedArray);
+          chargeChoicesTemplate("ingredients", orderedArray);
         }
+        onClickRemoveOrding(activeSortings, recipeArray, orderedArray);
+        onChangeOrderInput(
+          orderedArray,
+          activeSortings,
+          orderedRecipes,
+          recipeArray
+        );
         onClickSortingTag(
           orderedArray,
           activeSortings,

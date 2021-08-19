@@ -1,10 +1,12 @@
 import recipes from "../data/recipe.js";
-import { chargeChoices } from "./chargeChoices.js";
+import { chargeChoicesTemplate } from "./chargeChoicesTemplate.js";
 import { removeDuplicateInChoices } from "./removeDuplicateInChoices.js";
 import { fillChoicesArray } from "./fillChoicesArray.js";
 import { fillRecipesHtml } from "./fillRecipesHtml.js";
 import { Recipe } from "./Recipe.js";
 import { onClickSortingTag } from "./onClickSortingTag.js";
+import { onClickRemoveOrding } from "./onClickRemoveOrding.js";
+import { onChangeOrderInput } from "./onChangeOrderInput.js";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   // event to open differente choices lists
@@ -43,7 +45,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let orderedRecipes = [];
 
   // fill Choices Array
-  fillChoicesArray(recipeArray, choicesArray);
+  fillChoicesArray(recipeArray, choicesArray, activeSortings);
   // list of sorting choices used to store after being order (search or used tag)
   let orderedArray = JSON.parse(JSON.stringify(choicesArray));
   //---
@@ -60,56 +62,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
   //---
 
   // charge choices template
-  chargeChoices("ingredients", choicesArray);
-  chargeChoices("ustensils", choicesArray);
-  chargeChoices("appliances", choicesArray);
+  chargeChoicesTemplate("ingredients", choicesArray);
+  chargeChoicesTemplate("ustensils", choicesArray);
+  chargeChoicesTemplate("appliances", choicesArray);
   //---
 
   // onChange orders input event
-  document.querySelectorAll(".orders-input").forEach((input) => {
-    input.addEventListener("keyup", () => {
-      let inputValue = input.value;
-
-      if (input.classList.contains("ingredients-input")) {
-        orderedArray.ingredients = choicesArray.ingredients.filter(
-          (ingredient) =>
-            ingredient.toLowerCase().includes(inputValue.toLowerCase())
-        );
-        chargeChoices("ingredients", orderedArray);
-        onClickSortingTag(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
-      } else if (input.classList.contains("appliances-input")) {
-        orderedArray.appliances = choicesArray.appliances.filter((appliance) =>
-          appliance.toLowerCase().includes(inputValue.toLowerCase())
-        );
-        chargeChoices("appliances", orderedArray);
-        onClickSortingTag(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
-      } else if (input.classList.contains("ustensils-input")) {
-        orderedArray.ustensils = choicesArray.ustensils.filter((ustensil) =>
-          ustensil.toLowerCase().includes(inputValue.toLowerCase())
-        );
-        chargeChoices("ustensils", orderedArray);
-        onClickSortingTag(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
-      }
-    });
-  });
+  onChangeOrderInput(orderedArray, activeSortings, orderedRecipes, recipeArray);
   //---
 
   // on click on sorting tag
   onClickSortingTag(orderedArray, activeSortings, orderedRecipes, recipeArray);
+  //---
+
+  // on click active tag to remove it
   //---
 });
