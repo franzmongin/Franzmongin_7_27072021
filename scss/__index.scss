@@ -10,6 +10,8 @@
       flex-direction: column;
       align-items: center;
       text-decoration: none;
+      margin-top: 20px;
+      margin-bottom: 20px;
       h1 {
         color: #d04f4f;
         font-family: "DM sans";
@@ -32,105 +34,120 @@
         height: 70px;
         display: flex;
         background-color: #e7e7e7;
+        align-items: center;
+        border-radius: 5px;
+
         input {
+          border-radius: 5px;
           height: 100%;
           flex-grow: 1;
           border: none;
           box-sizing: border-box;
           background-color: inherit;
+          padding-left: 20px;
+          padding-right: 20px;
         }
         img {
-          width: 20px;
+          width: 32px;
+          height: 32px;
+          margin-right: 20px;
         }
       }
-      .active-tags {
-        display: flex;
-        position: relative;
-        top: 20px;
-        .active-choice {
-          color: white;
-          margin-right: 15px;
-          padding: 5px 10px;
-          border-radius: 5px;
-        }
-        .active-choice-ingredients {
-          background-color: #3282f7;
-        }
-        .active-choice-appliances {
-          background-color: #68d9a4;
-        }
-        .active-choice-ustensils {
-          background-color: #ed6454;
-        }
-      }
-      .order-selections {
-        display: flex;
-        align-items: flex-start;
+      .orders {
         position: absolute;
-        top: 150px;
-        column-gap: 20px;
-        .choices-selection {
-          width: inherit;
-          min-height: 4.3125rem;
-          color: white;
+        top: 90px;
+        .active-tags {
           display: flex;
-          flex-direction: column;
-          max-width: 50%;
-          border-radius: 5px;
-          position: relative;
-          padding-right: 20px;
-          padding-left: 20px;
-          &.opened-list {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-          }
-          .select-arrow {
-            content: url("../../images/icons/arrow_top.svg");
-            position: absolute;
-            right: 20px;
-            top: 30px;
-            &.bottom-arrow {
-              content: url("../../images/icons/arrow_bottom.svg");
+
+          .active-choice {
+            color: white;
+            margin-right: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            .ording-text {
+              margin-right: 10px;
             }
           }
-
-          &.ingredients-selection {
+          .active-choice-ingredients {
             background-color: #3282f7;
           }
-          &.appliances-selection {
+          .active-choice-appliances {
             background-color: #68d9a4;
           }
-          &.ustensils-selection {
+          .active-choice-ustensils {
             background-color: #ed6454;
           }
-          input {
-            background-color: inherit;
-            border: none;
-            outline: none;
-            color: white;
+        }
+        .order-selections {
+          display: flex;
+          align-items: flex-start;
+          // position: absolute;
+          top: 150px;
+          column-gap: 20px;
+          .choices-selection {
+            width: inherit;
             min-height: 4.3125rem;
-            flex-basis: 100%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            max-width: 50%;
             border-radius: 5px;
-            &::placeholder {
+            position: relative;
+            padding-right: 20px;
+            padding-left: 20px;
+            &.opened-list {
+              border-bottom-left-radius: 5px;
+              border-bottom-right-radius: 5px;
+            }
+            .select-arrow {
+              content: url("../../images/icons/arrow_top.svg");
+              position: absolute;
+              right: 20px;
+              top: 30px;
+              &.bottom-arrow {
+                content: url("../../images/icons/arrow_bottom.svg");
+              }
+            }
+
+            &.ingredients-selection {
+              background-color: #3282f7;
+            }
+            &.appliances-selection {
+              background-color: #68d9a4;
+            }
+            &.ustensils-selection {
+              background-color: #ed6454;
+            }
+            input {
+              background-color: inherit;
+              border: none;
+              outline: none;
               color: white;
+              min-height: 4.3125rem;
+              flex-basis: 100%;
+              border-radius: 5px;
+              &::placeholder {
+                color: white;
+              }
             }
-          }
-          .choices-list {
-            // flex-basis: 100%;
-            flex-wrap: wrap;
-            display: none;
-            // position: absolute;
-            background: inherit;
-            top: 69px;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            &.show-list {
-              display: flex;
-              column-gap: 10px;
-            }
-            .choice {
-              flex-basis: 32%;
-              margin-bottom: 10px;
+            .choices-list {
+              // flex-basis: 100%;
+              flex-wrap: wrap;
+              display: none;
+              // position: absolute;
+              background: inherit;
+              top: 69px;
+              border-bottom-left-radius: 5px;
+              border-bottom-right-radius: 5px;
+              &.show-list {
+                display: flex;
+                column-gap: 10px;
+              }
+              .choice {
+                flex-basis: 32%;
+                margin-bottom: 10px;
+              }
             }
           }
         }
@@ -145,9 +162,12 @@
         flex-basis: 32%;
         display: flex;
         flex-direction: column;
+
         .recipe-image {
           height: 170px;
           background-color: #c7bebe;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
         }
         margin-bottom: 40px;
         .recipe-content {
@@ -156,6 +176,8 @@
           background-color: #e7e7e7;
           padding: 18px;
           height: 200px;
+          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 5px;
 
           .heading-and-duration {
             display: flex;

@@ -6,6 +6,8 @@ import { capitalizeFirstLetter } from "./capitalizeFirstLetter.js";
 import { orderRecipesWithActiveTags } from "./orderRecipesWithActiveTags.js";
 import { onClickRemoveOrding } from "./onClickRemoveOrding.js";
 import { onChangeOrderInput } from "./onChangeOrderInput.js";
+
+
 export function onClickSortingTag(
   orderedArray,
   activeSortings,

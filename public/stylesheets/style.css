@@ -12,6 +12,8 @@
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .homepage .header .header-logo h1 {
   color: #d04f4f;
@@ -35,45 +37,57 @@
   height: 70px;
   display: flex;
   background-color: #e7e7e7;
+  align-items: center;
+  border-radius: 5px;
 }
 .homepage .main-content .search-and-tags .search-bar input {
+  border-radius: 5px;
   height: 100%;
   flex-grow: 1;
   border: none;
   box-sizing: border-box;
   background-color: inherit;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .homepage .main-content .search-and-tags .search-bar img {
-  width: 20px;
+  width: 32px;
+  height: 32px;
+  margin-right: 20px;
 }
-.homepage .main-content .search-and-tags .active-tags {
+.homepage .main-content .search-and-tags .orders {
+  position: absolute;
+  top: 90px;
+}
+.homepage .main-content .search-and-tags .orders .active-tags {
   display: flex;
-  position: relative;
-  top: 20px;
 }
-.homepage .main-content .search-and-tags .active-tags .active-choice {
+.homepage .main-content .search-and-tags .orders .active-tags .active-choice {
   color: white;
   margin-right: 15px;
   padding: 5px 10px;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
-.homepage .main-content .search-and-tags .active-tags .active-choice-ingredients {
+.homepage .main-content .search-and-tags .orders .active-tags .active-choice .ording-text {
+  margin-right: 10px;
+}
+.homepage .main-content .search-and-tags .orders .active-tags .active-choice-ingredients {
   background-color: #3282f7;
 }
-.homepage .main-content .search-and-tags .active-tags .active-choice-appliances {
+.homepage .main-content .search-and-tags .orders .active-tags .active-choice-appliances {
   background-color: #68d9a4;
 }
-.homepage .main-content .search-and-tags .active-tags .active-choice-ustensils {
+.homepage .main-content .search-and-tags .orders .active-tags .active-choice-ustensils {
   background-color: #ed6454;
 }
-.homepage .main-content .search-and-tags .order-selections {
+.homepage .main-content .search-and-tags .orders .order-selections {
   display: flex;
   align-items: flex-start;
-  position: absolute;
   top: 150px;
   column-gap: 20px;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection {
   width: inherit;
   min-height: 4.3125rem;
   color: white;
@@ -85,29 +99,29 @@
   padding-right: 20px;
   padding-left: 20px;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection.opened-list {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection.opened-list {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection .select-arrow {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection .select-arrow {
   content: url("../../images/icons/arrow_top.svg");
   position: absolute;
   right: 20px;
   top: 30px;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection .select-arrow.bottom-arrow {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection .select-arrow.bottom-arrow {
   content: url("../../images/icons/arrow_bottom.svg");
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection.ingredients-selection {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection.ingredients-selection {
   background-color: #3282f7;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection.appliances-selection {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection.appliances-selection {
   background-color: #68d9a4;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection.ustensils-selection {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection.ustensils-selection {
   background-color: #ed6454;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection input {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection input {
   background-color: inherit;
   border: none;
   outline: none;
@@ -116,10 +130,10 @@
   flex-basis: 100%;
   border-radius: 5px;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection input::placeholder {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection input::placeholder {
   color: white;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection .choices-list {
   flex-wrap: wrap;
   display: none;
   background: inherit;
@@ -127,11 +141,11 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list.show-list {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection .choices-list.show-list {
   display: flex;
   column-gap: 10px;
 }
-.homepage .main-content .search-and-tags .order-selections .choices-selection .choices-list .choice {
+.homepage .main-content .search-and-tags .orders .order-selections .choices-selection .choices-list .choice {
   flex-basis: 32%;
   margin-bottom: 10px;
 }
@@ -150,6 +164,8 @@
 .homepage .main-content .recipes-list .recipe .recipe-image {
   height: 170px;
   background-color: #c7bebe;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .homepage .main-content .recipes-list .recipe .recipe-content {
   display: flex;
@@ -157,6 +173,8 @@
   background-color: #e7e7e7;
   padding: 18px;
   height: 200px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .homepage .main-content .recipes-list .recipe .recipe-content .heading-and-duration {
   display: flex;
