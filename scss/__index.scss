@@ -5,11 +5,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    h1 {
-      color: #d04f4f;
-      font-family: "DM sans";
-      margin: 0;
-      font-size: 2.3125rem;
+    .header-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      h1 {
+        color: #d04f4f;
+        font-family: "DM sans";
+        margin: 0;
+        font-size: 2.3125rem;
+      }
     }
   }
   .main-content {
