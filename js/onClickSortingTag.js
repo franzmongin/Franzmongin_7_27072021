@@ -7,7 +7,6 @@ import { orderRecipesWithActiveTags } from "./orderRecipesWithActiveTags.js";
 import { onClickRemoveOrding } from "./onClickRemoveOrding.js";
 import { onChangeOrderInput } from "./onChangeOrderInput.js";
 
-
 export function onClickSortingTag(
   orderedArray,
   activeSortings,
@@ -33,14 +32,10 @@ export function onClickSortingTag(
             .querySelector(".active-tags")
             .appendChild(newActiveUstensilsTagElement);
           element.remove();
-          let activeUstensils = activeSortings.ustensils.map((e) =>
-            e.toLowerCase()
-          );
           orderedRecipes = orderRecipesWithActiveTags(
             activeSortings,
             recipeArray
           );
-          console.log(orderedRecipes);
           fillRecipesHtml(orderedRecipes);
           orderedArray = {
             ingredients: [],
@@ -49,13 +44,6 @@ export function onClickSortingTag(
           };
           fillChoicesArray(orderedRecipes, orderedArray, activeSortings);
           removeDuplicateInChoices(orderedArray);
-
-          activeUstensils.forEach((e) => {
-            orderedArray.ustensils.splice(
-              orderedArray.ustensils.indexOf(capitalizeFirstLetter(e)),
-              1
-            );
-          });
           chargeChoicesTemplate("ustensils", orderedArray);
           chargeChoicesTemplate("appliances", orderedArray);
           chargeChoicesTemplate("ingredients", orderedArray);
@@ -90,9 +78,6 @@ export function onClickSortingTag(
             .querySelector(".active-tags")
             .appendChild(newActiveAppliancesTagElement);
           element.remove();
-          let activeAppliances = activeSortings.appliances.map((e) =>
-            e.toLowerCase()
-          );
           orderedRecipes = orderRecipesWithActiveTags(
             activeSortings,
             recipeArray
@@ -105,12 +90,6 @@ export function onClickSortingTag(
           };
           fillChoicesArray(orderedRecipes, orderedArray, activeSortings);
           removeDuplicateInChoices(orderedArray);
-          activeAppliances.forEach((e) => {
-            orderedArray.appliances.splice(
-              orderedArray.appliances.indexOf(capitalizeFirstLetter(e)),
-              1
-            );
-          });
           chargeChoicesTemplate("ustensils", orderedArray);
           chargeChoicesTemplate("appliances", orderedArray);
           chargeChoicesTemplate("ingredients", orderedArray);
@@ -147,9 +126,7 @@ export function onClickSortingTag(
             .querySelector(".active-tags")
             .appendChild(newActiveIngredientsTagElement);
           element.remove();
-          let activeIngredients = activeSortings.ingredients.map((e) =>
-            e.toLowerCase()
-          );
+
           orderedRecipes = orderRecipesWithActiveTags(
             activeSortings,
             recipeArray
@@ -160,17 +137,11 @@ export function onClickSortingTag(
             appliances: [],
             ustensils: [],
           };
-
+          console.log(orderedArray.ingredients);
           fillChoicesArray(orderedRecipes, orderedArray, activeSortings);
-
+          console.log(orderedArray.ingredients);
           removeDuplicateInChoices(orderedArray);
-          activeIngredients.forEach((e) => {
-            orderedArray.ingredients.splice(
-              orderedArray.ingredients.indexOf(capitalizeFirstLetter(e)),
-              1
-            );
-          });
-          console.log("orderedArray-after-clicking-sorting", orderedArray);
+          console.log(orderedArray.ingredients);
           chargeChoicesTemplate("ustensils", orderedArray);
           chargeChoicesTemplate("appliances", orderedArray);
           chargeChoicesTemplate("ingredients", orderedArray);

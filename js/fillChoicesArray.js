@@ -1,10 +1,11 @@
 import { capitalizeFirstLetter } from "./capitalizeFirstLetter.js";
 export function fillChoicesArray(recipeArray, choicesArray, activeSortings) {
-  console.log("choicesArray", choicesArray);
-  console.log("activeSortings", activeSortings);
+  console.log(choicesArray.ingredients);
+  console.log(activeSortings.ingredients);
   recipeArray.forEach((recipe) => {
     if (recipe.ingredients) {
       recipe.ingredients.forEach((element) => {
+        console.log(element);
         if (
           !activeSortings.ingredients.includes(element.ingredient.toLowerCase())
         ) {

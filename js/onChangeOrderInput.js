@@ -12,10 +12,8 @@ export function onChangeOrderInput(
     input.addEventListener("keyup", () => {
       let inputValue = input.value;
       let orderedArrayWithTyping = JSON.parse(JSON.stringify(orderedArray));
-      console.log("orderedArrayWithTyping", orderedArrayWithTyping);
 
       if (input.classList.contains("ingredients-input")) {
-        console.log("ordered-array", orderedArray);
         orderedArrayWithTyping.ingredients = orderedArray.ingredients.filter(
           (ingredient) => {
             return (
