@@ -1,4 +1,9 @@
-export function orderRecipesWithActiveTags(activeSortings, recipeArray) {
+export function orderRecipesWithActiveTags(
+  activeSortings,
+  recipeArray,
+  value = ""
+) {
+  console.log(value);
   let activeUstensils = activeSortings.ustensils.map((e) => e.toLowerCase());
   let activeAppliances = activeSortings.appliances.map((e) => e.toLowerCase());
   let activeIngredients = activeSortings.ingredients.map((e) =>
@@ -12,7 +17,10 @@ export function orderRecipesWithActiveTags(activeSortings, recipeArray) {
     return (
       activeUstensils.every((v) => e.ustensils.includes(v)) &&
       activeAppliances.every((v) => e.appliance.includes(v)) &&
-      activeIngredients.every((i) => ingArray.includes(i))
+      activeIngredients.every((i) => ingArray.includes(i)) &&
+      (ingArray.some((i) => i.includes(value)) ||
+        e.appliance.includes(value) ||
+        e.ustensils.some((u) => u.includes(value)))
     );
   });
 }

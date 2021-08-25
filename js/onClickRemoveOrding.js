@@ -5,6 +5,7 @@ import { removeDuplicateInChoices } from "./removeDuplicateInChoices.js";
 import { chargeChoicesTemplate } from "./chargeChoicesTemplate.js";
 import { onClickSortingTag } from "./onClickSortingTag.js";
 export function onClickRemoveOrding(activeSortings, recipeArray, orderedArray) {
+  let searchValue = document.querySelector(".search-input").value;
   document.querySelectorAll(".remove-ording").forEach((button) => {
     button.addEventListener("click", (e) => {
       let parent = e.currentTarget.parentNode;
@@ -44,8 +45,12 @@ export function onClickRemoveOrding(activeSortings, recipeArray, orderedArray) {
         default:
           break;
       }
-      let orderedRecipes = [];
-      orderedRecipes = orderRecipesWithActiveTags(activeSortings, recipeArray);
+      console.log(orderedRecipes);
+      orderedRecipes = orderRecipesWithActiveTags(
+        activeSortings,
+        recipeArray,
+        searchValue
+      );
       fillRecipesHtml(orderedRecipes);
       orderedArray = {
         ingredients: [],
@@ -58,12 +63,7 @@ export function onClickRemoveOrding(activeSortings, recipeArray, orderedArray) {
       chargeChoicesTemplate("ustensils", orderedArray);
       chargeChoicesTemplate("appliances", orderedArray);
       chargeChoicesTemplate("ingredients", orderedArray);
-      onClickSortingTag(
-        orderedArray,
-        activeSortings,
-        orderedRecipes,
-        recipeArray
-      );
+      onClickSortingTag(orderedArray, activeSortings, recipeArray);
       parent.remove();
     });
   });

@@ -7,7 +7,9 @@ import { Recipe } from "./Recipe.js";
 import { onClickSortingTag } from "./onClickSortingTag.js";
 import { onClickRemoveOrding } from "./onClickRemoveOrding.js";
 import { onChangeOrderInput } from "./onChangeOrderInput.js";
+import { onSearchBarEvent } from "./onSearchBarEvent.js";
 
+window.orderedRecipes = [];
 window.addEventListener("DOMContentLoaded", (event) => {
   // event to open differente choices lists
   document.querySelectorAll(".choices-selection").forEach((element) => {
@@ -38,11 +40,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
     ustensils: [],
   };
   //---
-
   // create recipes objects
-  recipes.forEach((recipe) => recipeArray.push(new Recipe(recipe)));
+  recipes.forEach((recipe) => {
+    recipeArray.push(new Recipe(recipe));
+    orderedRecipes.push(new Recipe(recipe));
+  });
   //---
-  let orderedRecipes = [];
 
   // fill Choices Array
   fillChoicesArray(recipeArray, choicesArray, activeSortings);
@@ -68,13 +71,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
   //---
 
   // onChange orders input event
-  onChangeOrderInput(orderedArray, activeSortings, orderedRecipes, recipeArray);
+  onChangeOrderInput(orderedArray, activeSortings, recipeArray);
   //---
 
   // on click on sorting tag
-  onClickSortingTag(orderedArray, activeSortings, orderedRecipes, recipeArray);
+  onClickSortingTag(orderedArray, activeSortings, recipeArray);
   //---
 
   // on click active tag to remove it
   //---
+
+  //
+  onSearchBarEvent(orderedArray, activeSortings, recipeArray);
 });

@@ -2,20 +2,16 @@ import { fillRecipesHtml } from "./fillRecipesHtml.js";
 import { chargeChoicesTemplate } from "./chargeChoicesTemplate.js";
 import { fillChoicesArray } from "./fillChoicesArray.js";
 import { removeDuplicateInChoices } from "./removeDuplicateInChoices.js";
-import { capitalizeFirstLetter } from "./capitalizeFirstLetter.js";
 import { orderRecipesWithActiveTags } from "./orderRecipesWithActiveTags.js";
 import { onClickRemoveOrding } from "./onClickRemoveOrding.js";
 import { onChangeOrderInput } from "./onChangeOrderInput.js";
 
-export function onClickSortingTag(
-  orderedArray,
-  activeSortings,
-  orderedRecipes,
-  recipeArray
-) {
+export function onClickSortingTag(orderedArray, activeSortings, recipeArray) {
   document.querySelectorAll(".choice").forEach((element) => {
     element.addEventListener("click", (e) => {
       let content = e.target.textContent;
+      let searchValue = document.querySelector(".search-input").value;
+      console.log(searchValue);
       // ustensils case
       if (e.target.classList.contains("choice-type-ustensils")) {
         if (orderedArray.ustensils.indexOf(content) > -1) {
@@ -32,10 +28,13 @@ export function onClickSortingTag(
             .querySelector(".active-tags")
             .appendChild(newActiveUstensilsTagElement);
           element.remove();
+
           orderedRecipes = orderRecipesWithActiveTags(
             activeSortings,
-            recipeArray
+            recipeArray,
+            searchValue
           );
+
           fillRecipesHtml(orderedRecipes);
           orderedArray = {
             ingredients: [],
@@ -49,18 +48,8 @@ export function onClickSortingTag(
           chargeChoicesTemplate("ingredients", orderedArray);
         }
         onClickRemoveOrding(activeSortings, recipeArray, orderedArray);
-        onChangeOrderInput(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
-        onClickSortingTag(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
+        onChangeOrderInput(orderedArray, activeSortings, recipeArray);
+        onClickSortingTag(orderedArray, activeSortings, recipeArray);
         //--- ustensils case
 
         // appliances case
@@ -80,7 +69,8 @@ export function onClickSortingTag(
           element.remove();
           orderedRecipes = orderRecipesWithActiveTags(
             activeSortings,
-            recipeArray
+            recipeArray,
+            searchValue
           );
           fillRecipesHtml(orderedRecipes);
           orderedArray = {
@@ -95,18 +85,8 @@ export function onClickSortingTag(
           chargeChoicesTemplate("ingredients", orderedArray);
         }
         onClickRemoveOrding(activeSortings, recipeArray, orderedArray);
-        onChangeOrderInput(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
-        onClickSortingTag(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
+        onChangeOrderInput(orderedArray, activeSortings, recipeArray);
+        onClickSortingTag(orderedArray, activeSortings, recipeArray);
         // --- appliances case
 
         //ingredients case
@@ -129,7 +109,8 @@ export function onClickSortingTag(
 
           orderedRecipes = orderRecipesWithActiveTags(
             activeSortings,
-            recipeArray
+            recipeArray,
+            searchValue
           );
           fillRecipesHtml(orderedRecipes);
           orderedArray = {
@@ -137,28 +118,15 @@ export function onClickSortingTag(
             appliances: [],
             ustensils: [],
           };
-          console.log(orderedArray.ingredients);
           fillChoicesArray(orderedRecipes, orderedArray, activeSortings);
-          console.log(orderedArray.ingredients);
           removeDuplicateInChoices(orderedArray);
-          console.log(orderedArray.ingredients);
           chargeChoicesTemplate("ustensils", orderedArray);
           chargeChoicesTemplate("appliances", orderedArray);
           chargeChoicesTemplate("ingredients", orderedArray);
         }
         onClickRemoveOrding(activeSortings, recipeArray, orderedArray);
-        onChangeOrderInput(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
-        onClickSortingTag(
-          orderedArray,
-          activeSortings,
-          orderedRecipes,
-          recipeArray
-        );
+        onChangeOrderInput(orderedArray, activeSortings, recipeArray);
+        onClickSortingTag(orderedArray, activeSortings, recipeArray);
       }
       // --- ingredients case
     });

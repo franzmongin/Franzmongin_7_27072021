@@ -5,7 +5,6 @@ import { onClickSortingTag } from "./onClickSortingTag.js";
 export function onChangeOrderInput(
   orderedArray,
   activeSortings,
-  orderedRecipes,
   recipeArray
 ) {
   document.querySelectorAll(".orders-input").forEach((input) => {
@@ -30,7 +29,6 @@ export function onChangeOrderInput(
         onClickSortingTag(
           orderedArray,
           activeSortings,
-          orderedRecipes,
           recipeArray
         );
       } else if (input.classList.contains("appliances-input")) {
@@ -46,7 +44,6 @@ export function onChangeOrderInput(
         onClickSortingTag(
           orderedArray,
           activeSortings,
-          orderedRecipes,
           recipeArray
         );
       } else if (input.classList.contains("ustensils-input")) {
@@ -62,7 +59,6 @@ export function onChangeOrderInput(
         onClickSortingTag(
           orderedArray,
           activeSortings,
-          orderedRecipes,
           recipeArray
         );
       }
