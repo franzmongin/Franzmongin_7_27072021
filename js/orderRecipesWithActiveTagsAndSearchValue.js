@@ -23,15 +23,19 @@ export function orderRecipesWithActiveTagsAndSearchValue(
   }
   let orderedRecipesWithTags = orderWithActiveTags();
   function orderWithSearchValue(value) {
-    return orderedRecipesWithTags.filter((e) => {
-      return (
-        e.ingredients.some((i) =>
+    let orderedArrayWithSearchValue = [];
+    for (const recipe of orderedRecipesWithTags) {
+      if (
+        recipe.ingredients.some((i) =>
           i.ingredient.toLowerCase().includes(value.toLowerCase())
         ) ||
-        e.name.toLowerCase().includes(value.toLowerCase()) ||
-        e.description.toLowerCase().includes(value.toLowerCase())
-      );
-    });
+        recipe.name.toLowerCase().includes(value.toLowerCase()) ||
+        recipe.description.toLowerCase().includes(value.toLowerCase())
+      ) {
+        orderedArrayWithSearchValue.push(recipe);
+      }
+    }
+    return orderedArrayWithSearchValue;
   }
   let newArray = orderWithSearchValue(searchValue);
   return newArray;
