@@ -1,7 +1,7 @@
 export function orderRecipesWithActiveTagsAndSearchValue(
   activeSortings,
   recipeArray,
-  value = ""
+  searchValue = ""
 ) {
   function orderWithActiveTags() {
     let activeUstensils = activeSortings.ustensils.map((e) => e.toLowerCase());
@@ -22,8 +22,7 @@ export function orderRecipesWithActiveTagsAndSearchValue(
     });
   }
   let orderedRecipesWithTags = orderWithActiveTags();
-
-  function orderWithSearchValue() {
+  function orderWithSearchValue(value) {
     return orderedRecipesWithTags.filter((e) => {
       return (
         e.ingredients.some((i) =>
@@ -34,6 +33,6 @@ export function orderRecipesWithActiveTagsAndSearchValue(
       );
     });
   }
-  let newArray = orderWithSearchValue();
+  let newArray = orderWithSearchValue(searchValue);
   return newArray;
 }
