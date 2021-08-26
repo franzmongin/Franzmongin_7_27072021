@@ -12,14 +12,12 @@ export function orderRecipesWithActiveTagsAndSearchValue(
       e.toLowerCase()
     );
     return recipeArray.filter((e) => {
-      let ingArray = [];
-      e.ingredients.forEach((ing) => {
-        ingArray.push(ing.ingredient.toLowerCase());
-      });
       return (
         activeUstensils.every((v) => e.ustensils.includes(v)) &&
-        activeAppliances.every((v) => e.appliance.includes(v)) &&
-        activeIngredients.every((i) => ingArray.includes(i))
+        activeAppliances.every((v) => e.appliance === v) &&
+        activeIngredients.every((i) =>
+          e.ingredients.some((ing) => ing.ingredient.toLowerCase() === i)
+        )
       );
     });
   }
@@ -27,12 +25,10 @@ export function orderRecipesWithActiveTagsAndSearchValue(
 
   function orderWithSearchValue() {
     return orderedRecipesWithTags.filter((e) => {
-      let ingArray = [];
-      e.ingredients.forEach((ing) => {
-        ingArray.push(ing.ingredient.toLowerCase());
-      });
       return (
-        ingArray.some((i) => i.toLowerCase().includes(value.toLowerCase())) ||
+        e.ingredients.some((i) =>
+          i.ingredient.toLowerCase().includes(value.toLowerCase())
+        ) ||
         e.name.toLowerCase().includes(value.toLowerCase()) ||
         e.description.toLowerCase().includes(value.toLowerCase())
       );
