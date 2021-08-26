@@ -31,16 +31,13 @@ export function orderRecipesWithActiveTagsAndSearchValue(
       e.ingredients.forEach((ing) => {
         ingArray.push(ing.ingredient.toLowerCase());
       });
-      console.log(e.name);
-      console.log(value);
       return (
-        ingArray.some((i) => i.includes(value)) ||
-        e.name.toLowerCase().includes(value) ||
-        e.description.includes(value)
+        ingArray.some((i) => i.toLowerCase().includes(value.toLowerCase())) ||
+        e.name.toLowerCase().includes(value.toLowerCase()) ||
+        e.description.toLowerCase().includes(value.toLowerCase())
       );
     });
   }
   let newArray = orderWithSearchValue();
-  console.log(newArray);
   return newArray;
 }
