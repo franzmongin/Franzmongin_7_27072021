@@ -1,4 +1,4 @@
-import { orderRecipesWithActiveTags } from "./orderRecipesWithActiveTags.js";
+import { orderRecipesWithActiveTagsAndSearchValue } from "./orderRecipesWithActiveTagsAndSearchValue.js";
 import { fillRecipesHtml } from "./fillRecipesHtml.js";
 import { fillChoicesArray } from "./fillChoicesArray.js";
 import { removeDuplicateInChoices } from "./removeDuplicateInChoices.js";
@@ -45,8 +45,7 @@ export function onClickRemoveOrding(activeSortings, recipeArray, orderedArray) {
         default:
           break;
       }
-      console.log(orderedRecipes);
-      orderedRecipes = orderRecipesWithActiveTags(
+      orderedRecipes = orderRecipesWithActiveTagsAndSearchValue(
         activeSortings,
         recipeArray,
         searchValue

@@ -1,4 +1,4 @@
-export function orderRecipesWithActiveTags(
+export function orderRecipesWithActiveTagsAndSearchValue(
   activeSortings,
   recipeArray,
   value = ""
@@ -19,8 +19,8 @@ export function orderRecipesWithActiveTags(
       activeAppliances.every((v) => e.appliance.includes(v)) &&
       activeIngredients.every((i) => ingArray.includes(i)) &&
       (ingArray.some((i) => i.includes(value)) ||
-        e.appliance.includes(value) ||
-        e.ustensils.some((u) => u.includes(value)))
+        e.name.includes(value) ||
+        e.description.includes(value))
     );
   });
 }

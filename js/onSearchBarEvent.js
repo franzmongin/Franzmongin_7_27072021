@@ -4,7 +4,7 @@ import { removeDuplicateInChoices } from "./removeDuplicateInChoices.js";
 import { chargeChoicesTemplate } from "./chargeChoicesTemplate.js";
 import { fillChoicesArray } from "./fillChoicesArray.js";
 import { onChangeOrderInput } from "./onChangeOrderInput.js";
-import { orderRecipesWithActiveTags } from "./orderRecipesWithActiveTags.js";
+import { orderRecipesWithActiveTagsAndSearchValue } from "./orderRecipesWithActiveTagsAndSearchValue.js";
 
 export function onSearchBarEvent(orderedArray, activeSortings, recipeArray) {
   document
@@ -13,7 +13,7 @@ export function onSearchBarEvent(orderedArray, activeSortings, recipeArray) {
 
   function searchBarHandler(e) {
     let value = e.currentTarget.value;
-    orderedRecipes = orderRecipesWithActiveTags(
+    orderedRecipes = orderRecipesWithActiveTagsAndSearchValue(
       activeSortings,
       recipeArray,
       value

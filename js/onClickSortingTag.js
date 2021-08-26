@@ -2,7 +2,7 @@ import { fillRecipesHtml } from "./fillRecipesHtml.js";
 import { chargeChoicesTemplate } from "./chargeChoicesTemplate.js";
 import { fillChoicesArray } from "./fillChoicesArray.js";
 import { removeDuplicateInChoices } from "./removeDuplicateInChoices.js";
-import { orderRecipesWithActiveTags } from "./orderRecipesWithActiveTags.js";
+import { orderRecipesWithActiveTagsAndSearchValue } from "./orderRecipesWithActiveTagsAndSearchValue.js";
 import { onClickRemoveOrding } from "./onClickRemoveOrding.js";
 import { onChangeOrderInput } from "./onChangeOrderInput.js";
 
@@ -29,7 +29,7 @@ export function onClickSortingTag(orderedArray, activeSortings, recipeArray) {
             .appendChild(newActiveUstensilsTagElement);
           element.remove();
 
-          orderedRecipes = orderRecipesWithActiveTags(
+          orderedRecipes = orderRecipesWithActiveTagsAndSearchValue(
             activeSortings,
             recipeArray,
             searchValue
@@ -67,7 +67,7 @@ export function onClickSortingTag(orderedArray, activeSortings, recipeArray) {
             .querySelector(".active-tags")
             .appendChild(newActiveAppliancesTagElement);
           element.remove();
-          orderedRecipes = orderRecipesWithActiveTags(
+          orderedRecipes = orderRecipesWithActiveTagsAndSearchValue(
             activeSortings,
             recipeArray,
             searchValue
@@ -107,7 +107,7 @@ export function onClickSortingTag(orderedArray, activeSortings, recipeArray) {
             .appendChild(newActiveIngredientsTagElement);
           element.remove();
 
-          orderedRecipes = orderRecipesWithActiveTags(
+          orderedRecipes = orderRecipesWithActiveTagsAndSearchValue(
             activeSortings,
             recipeArray,
             searchValue
