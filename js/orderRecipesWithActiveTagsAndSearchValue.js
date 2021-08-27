@@ -21,11 +21,11 @@ export function orderRecipesWithActiveTagsAndSearchValue(
       );
     });
   }
-  let newArray = orderWithActiveTags();
+  let resultArray = orderWithActiveTags();
   console.time();
   function orderWithSearchValue(value) {
     let orderedArrayWithSearchValue = [];
-    for (const recipe of newArray) {
+    for (const recipe of resultArray) {
       if (
         recipe.ingredients.some((i) =>
           i.ingredient.toLowerCase().includes(value.toLowerCase())
@@ -39,9 +39,9 @@ export function orderRecipesWithActiveTagsAndSearchValue(
     return orderedArrayWithSearchValue;
   }
   if (searchValue.length >= 3) {
-    newArray = orderWithSearchValue(searchValue);
+    resultArray = orderWithSearchValue(searchValue);
   }
 
   console.timeEnd();
-  return newArray;
+  return resultArray;
 }
