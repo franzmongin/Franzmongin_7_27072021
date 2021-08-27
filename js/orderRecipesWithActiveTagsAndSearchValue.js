@@ -21,9 +21,10 @@ export function orderRecipesWithActiveTagsAndSearchValue(
       );
     });
   }
-  let orderedRecipesWithTags = orderWithActiveTags();
+  let newArray = orderWithActiveTags();
+  console.time();
   function orderWithSearchValue(value) {
-    return orderedRecipesWithTags.filter((e) => {
+    return newArray.filter((e) => {
       return (
         e.ingredients.some((i) =>
           i.ingredient.toLowerCase().includes(value.toLowerCase())
@@ -33,6 +34,9 @@ export function orderRecipesWithActiveTagsAndSearchValue(
       );
     });
   }
-  let newArray = orderWithSearchValue(searchValue);
+  if (searchValue.length >= 3) {
+    newArray = orderWithSearchValue(searchValue);
+  }
+  console.timeEnd();
   return newArray;
 }
